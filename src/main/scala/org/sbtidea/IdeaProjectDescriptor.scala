@@ -67,7 +67,7 @@ class IdeaProjectDescriptor(val projectInfo: IdeaProjectInfo, val env: IdeaProje
   private def libraryTableComponent(library: IdeaLibrary): xml.Node = {
     def makeUrl(file: File) = {
       val path = projectRelative(file)
-      val formatStr = if (path.endsWith(".jar")) "jar://%s!/" else "file://%s"
+      val formatStr = if (path.endsWith(".jar") || path.endsWith(".zip")) "jar://%s!/" else "file://%s"
       <root url={String.format(formatStr, path)}/>
     }
     <component name="libraryTable">
